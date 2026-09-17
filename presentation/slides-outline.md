@@ -27,16 +27,26 @@ Requirements → Design → Implementation → Testing → Deployment → Mainte
 - Support for learning and routine work
 
 ## Slide 8 — Evidence
-Discuss the Copilot controlled experiment carefully: one JavaScript HTTP-server task, 95 professional developers, and a reported 55.8% faster completion for the treatment group.
+- Copilot controlled experiment: 95 professional developers, one JavaScript HTTP-server task, 55.8% faster treatment-group completion.
+- Workplace field experiments: pooled analysis of 4,867 developers reported 26.08% more completed tasks.
+- Enterprise RCT: 96 Google engineers, estimated approximately 21% less time on a complex task.
+- Explain that these are different studies, not one universal productivity number.
 
 ## Slide 9 — Risks
 Hallucinations, insecure suggestions, package hallucination/supply-chain risk, privacy, licensing, bias, context limitations, and over-reliance.
 
-## Slide 10 — Responsible workflow
+## Slide 10 — Automation levels
+Drafting assistance → review assistance → guided transformation → operational execution.
+The required controls become stricter as the impact of an error increases.
+
+## Slide 11 — Responsible workflow
 Prompt → inspect → run tests → security/dependency checks → human review → document AI assistance.
 
-## Slide 11 — Conclusion
+## Slide 12 — Governance
+NIST-aligned loop: govern → map → measure → manage. Connect AI controls to pull requests, CI, secret scanning, dependency audits, and release approvals.
+
+## Slide 13 — Conclusion
 LLMs are useful force multipliers for bounded tasks, not autonomous replacements for software engineering accountability.
 
-## Slide 12 — References and questions
+## Slide 14 — References and questions
 Use the project reference list and invite questions.

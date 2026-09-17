@@ -23,6 +23,10 @@ This project is a structured literature review and evidence synthesis. It does *
 - [`presentation/slides-outline.md`](presentation/slides-outline.md) — presentation outline
 - [`presentation/viva-questions.md`](presentation/viva-questions.md) — viva preparation
 
+## Expanded analysis
+
+The paper now includes a task-risk automation model, a broader productivity measurement framework, workplace and enterprise evidence, SWE-bench discussion, educational implications, and a NIST-aligned governance framework. The evidence matrix has been expanded with benchmark, field-experiment, enterprise-trial, and governance sources.
+
 ## Scope and academic integrity
 
 The paper distinguishes primary study results from synthesis and inference. Numerical claims are not presented as universal guarantees. Before submission, add the student's name, institution, course, supervisor, submission date, and any institution-required citation style.

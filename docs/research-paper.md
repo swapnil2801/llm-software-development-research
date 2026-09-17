@@ -112,11 +112,61 @@ A practical workflow is:
 
 This workflow turns the LLM into a high-speed drafting and reasoning aid while preserving engineering accountability.
 
-## 7. Research Gaps
+## 7. Comparative Analysis of Automation Levels
+
+Not all software-development tasks have the same suitability for LLM automation. A useful distinction is between **drafting**, **verification**, and **execution**:
+
+| Automation level | Example | Main control required |
+|---|---|---|
+| Drafting assistance | Generate a function, test case, or documentation paragraph | Developer inspection and local tests |
+| Review assistance | Explain a diff, identify edge cases, or suggest vulnerabilities | Independent review and static analysis |
+| Guided transformation | Refactor a bounded module or migrate an API | Small commits, regression tests, and rollback |
+| Operational execution | Modify production infrastructure or deploy a release | Least privilege, approval gates, audit logs, and rollback |
+
+This classification explains why a model can be useful without being trusted with unrestricted autonomy. The cost of an error rises as the task moves from drafting to execution. A generated comment is usually easy to correct; an incorrect production migration can cause data loss. Therefore, organizations should match autonomy to risk rather than treating an LLM as either completely safe or completely unsafe.
+
+Benchmark evidence also shows why simple code-generation results do not fully represent software engineering. SWE-bench evaluates whether a model can resolve real GitHub issues by editing an existing repository and passing tests. Its original evaluation found that even strong models solved only a small fraction of issues, with the best reported result in that study at 1.96%. Real issues require repository navigation, interpretation of incomplete requirements, coordination across files, and regression reasoning. This is a substantially harder problem than producing an isolated function from a short prompt.
+
+## 8. Measuring Productivity and Quality Together
+
+Productivity should not be measured only by lines of code or time to first output. A faster first draft can create additional review and debugging work. A more complete evaluation should measure:
+
+- **Speed:** task completion time and time to first working draft.
+- **Correctness:** acceptance-test pass rate, defect rate, and issue resolution rate.
+- **Quality:** maintainability, readability, architectural consistency, and test coverage.
+- **Rework:** number of revisions, reverted changes, and post-review fixes.
+- **Security:** vulnerabilities, dependency risk, secret exposure, and policy violations.
+- **Developer experience:** cognitive load, confidence, learning, and perceived usefulness.
+- **Team outcomes:** review latency, handoff quality, documentation completeness, and operational incidents.
+
+Recent field evidence illustrates the importance of context. A pooled analysis of three workplace experiments involving 4,867 developers reported a 26.08% increase in completed tasks for developers given access to Copilot. A separate randomized enterprise study with 96 Google software engineers reported an estimated reduction of approximately 21% in time spent on a complex enterprise task, while noting a wide confidence interval. These findings complement the earlier 55.8% result from a focused HTTP-server task, but they should not be combined as if they were one universal effect size. The studies use different environments, tasks, outcome definitions, tools, and levels of researcher control.
+
+The appropriate conclusion is conditional: LLM assistance can improve throughput for some developers and tasks, particularly where context is available and output can be checked. The benefit may be offset when the tool produces nearly-correct output that requires substantial debugging. Evaluation should therefore include the total time from task assignment to accepted, maintainable, and secure change.
+
+## 9. Educational and Organizational Implications
+
+LLM-assisted development changes the skills expected of students and professional developers. Syntax recall becomes less central for some tasks, while problem decomposition, specification writing, testing, source evaluation, debugging, security reasoning, and communication become more important. Students should be assessed on whether they can explain and verify a solution, not merely whether they can obtain a working-looking output from a chatbot.
+
+Organizations should introduce LLM tools through bounded pilots. A pilot can begin with documentation, test scaffolding, code explanation, and low-risk refactoring. Teams can then compare baseline and assisted work using a consistent scorecard. Policies should define approved tools, prohibited data, code-review responsibilities, attribution expectations, incident reporting, and criteria for expanding use. Usage volume alone is not proof of value; trust, quality, and rework must be monitored alongside adoption.
+
+## 10. Governance and Secure Adoption Framework
+
+NIST's Generative AI Profile recommends governing, mapping, measuring, and managing risks across the AI lifecycle. Applied to software development, this framework can become a practical control loop:
+
+1. **Govern:** define ownership, acceptable use, data rules, review responsibilities, and escalation paths.
+2. **Map:** identify where the model enters the SDLC, what data it receives, what tools it can call, and who may be affected by failure.
+3. **Measure:** evaluate accuracy, security, privacy, robustness, maintainability, cost, and developer outcomes before and after adoption.
+4. **Manage:** apply safeguards proportional to risk, including access controls, test gates, dependency verification, monitoring, incident response, and periodic reassessment.
+
+For software teams, governance should be connected to ordinary engineering controls rather than treated as a separate document. Pull requests, branch protection, CI, secret scanning, software-composition analysis, static analysis, and release approvals can provide evidence that generated changes were evaluated. Generated code should be held to the same quality and security standards as human-written code; the origin of a line does not determine whether it is safe.
+
+## 11. Research Gaps
 
 Future research should improve ecological validity by measuring complete development tasks in real repositories rather than isolated benchmark prompts. Studies should report correctness, maintainability, security, review time, rework, and long-term outcomes alongside completion time. More evidence is needed for requirements, architecture, deployment, maintenance, and diverse programming communities. Research should also evaluate multi-agent systems, model drift, data governance, package hallucination, energy use, and the effect of AI assistance on developer learning.
 
-## 8. Conclusion
+Additional open questions include whether AI-generated changes accumulate technical debt over months, how much repository context is actually useful, how junior and senior developers differ in verification behavior, and how organizations can audit model-assisted decisions without creating excessive process overhead. Benchmarks should include realistic incomplete requirements, hidden tests, security constraints, dependency updates, and maintenance tasks. This would better reflect the conditions under which software teams make decisions.
+
+## 12. Conclusion
 
 LLMs are changing software development by automating portions of code production and knowledge work throughout the SDLC. Evidence supports meaningful assistance for bounded tasks, and controlled studies show that some developers can complete selected tasks faster with coding assistants. Nevertheless, LLMs remain probabilistic systems that can be wrong, insecure, or inconsistent. The most defensible position is neither unrestricted automation nor rejection of the technology. LLMs should be integrated as supervised tools within an engineering process that includes clear requirements, independent validation, secure dependency practices, human review, and accountability. Their role is best understood as augmenting developers while shifting their effort toward specification, evaluation, architecture, and responsible decision-making.
 
