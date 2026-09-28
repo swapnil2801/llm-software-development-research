@@ -23,6 +23,15 @@ This project is a structured literature review and evidence synthesis. It does *
 - [`presentation/slides-outline.md`](presentation/slides-outline.md) — presentation outline
 - [`presentation/viva-questions.md`](presentation/viva-questions.md) — viva preparation
 
+## Submission documents
+
+Formatted, submission-ready copies of the full paper (title page, abstract, table of contents, numbered sections, comparison table, and references) are generated from a single source and kept in sync:
+
+- [`docs/LLM-Software-Development-Research.pdf`](docs/LLM-Software-Development-Research.pdf) — print/submit-ready PDF
+- [`docs/LLM-Software-Development-Research.docx`](docs/LLM-Software-Development-Research.docx) — editable Word version
+
+Regenerate both with `python build_docs.py` (requires `python-docx` and `reportlab`). Complete the title-page fields (name, roll no., course, institution, supervisor, date) and convert the bibliography to your institution's required citation style before submitting.
+
 ## Expanded analysis
 
 The paper now includes a task-risk automation model, a broader productivity measurement framework, workplace and enterprise evidence, SWE-bench discussion, educational implications, and a NIST-aligned governance framework. The evidence matrix has been expanded with benchmark, field-experiment, enterprise-trial, and governance sources.
